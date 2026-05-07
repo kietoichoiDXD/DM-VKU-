@@ -18,7 +18,7 @@ const Marquee = () => (
         {[...Array(2)].map((_, i) => (
           <div key={i} className="flex space-x-16 items-center">
             {["Google Partner", "Meta Business", "TikTok FOR BUSINESS", "Shopee", "Lazada", "HubSpot", "Salesforce"].map((brand, idx) => (
-              <span key={idx} className="text-xl font-display font-bold text-slate-400 uppercase tracking-widest opacity-50 hover:opacity-100 transition-opacity">
+              <span key={idx} className="text-base sm:text-xl font-display font-bold text-slate-400 uppercase tracking-widest opacity-50 hover:opacity-100 transition-opacity">
                 {brand}
               </span>
             ))}
@@ -41,31 +41,33 @@ export default function Home() {
         <div className="absolute top-20 right-20 w-96 h-96 bg-primary/20 rounded-full blur-[100px] pointer-events-none" />
         <div className="absolute bottom-20 left-20 w-72 h-72 bg-blue-400/20 rounded-full blur-[80px] pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-16 items-center relative z-10 py-20">
+        <div className="max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10 py-10 lg:py-20">
           
           {/* Left Column: Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="space-y-8"
+            className="space-y-6 lg:space-y-8 text-center lg:text-left"
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-full text-sm font-bold tracking-wide text-slate-700 uppercase shadow-sm">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
+            <div className="flex justify-center lg:justify-start">
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-full text-xs sm:text-sm font-bold tracking-wide text-slate-700 uppercase shadow-sm">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
+                </span>
+                Tuyển sinh năm {new Date().getFullYear()}
               </span>
-              Tuyển sinh năm {new Date().getFullYear()}
-            </span>
+            </div>
             
             <motion.h1 
-              className="text-6xl lg:text-7xl xl:text-[80px] font-display font-extrabold text-slate-900 tracking-tight leading-[1.05]"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px] font-display font-extrabold text-slate-900 tracking-tight leading-[1.1]"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.8 }}
             >
-              Định Hình <br />
-              <span className="relative inline-block">
+              Định Hình <br className="hidden sm:block" />
+              <span className="relative inline-block mt-2 lg:mt-0">
                 <span className="absolute -inset-1 rounded-lg bg-gradient-to-r from-primary via-rose-500 to-orange-500 opacity-20 blur-xl"></span>
                 <span className="relative text-transparent bg-clip-text bg-gradient-to-r from-primary via-rose-500 to-orange-500">
                   Thương Hiệu Số.
@@ -73,28 +75,42 @@ export default function Home() {
               </span>
             </motion.h1>
             
-            <p className="text-xl text-slate-600 max-w-lg leading-relaxed font-light">
+            <p className="text-lg sm:text-xl text-slate-600 max-w-lg mx-auto lg:mx-0 leading-relaxed font-light">
               Chương trình đào tạo Cử nhân Digital Marketing tại VKU. Trải nghiệm môi trường thực chiến năng động, kiến tạo giải pháp truyền thông đột phá.
             </p>
             
-            <div className="flex flex-col sm:flex-row items-start gap-4 pt-4">
-              <Link to="/tuyen-sinh" className="px-8 py-4 bg-slate-900 text-white rounded-2xl font-bold text-lg hover:bg-slate-800 transition-all hover:scale-105 active:scale-95 flex items-center gap-2 shadow-xl shadow-slate-900/20">
+            <div className="flex flex-col sm:flex-row items-center lg:items-start gap-4 pt-4">
+              <Link to="/tuyen-sinh" className="w-full sm:w-auto px-8 py-4 bg-slate-900 text-white rounded-2xl font-bold text-lg hover:bg-slate-800 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2 shadow-xl shadow-slate-900/20">
                 Đăng ký ngay
                 <ArrowRight className="w-5 h-5" />
               </Link>
-              <Link to="/chuong-trinh" className="px-8 py-4 bg-white text-slate-900 border border-slate-200 rounded-2xl font-bold text-lg hover:border-slate-300 hover:bg-slate-50 transition-all flex items-center gap-2 shadow-sm">
-                Khám phá chương trình
+              <Link to="/chuong-trinh" className="w-full sm:w-auto px-8 py-4 bg-white text-slate-900 border border-slate-200 rounded-2xl font-bold text-lg hover:border-slate-300 hover:bg-slate-50 transition-all flex items-center justify-center gap-2 shadow-sm">
+                Khám phá
               </Link>
             </div>
             
-            <div className="pt-8 flex items-center gap-4 border-t border-slate-200/60">
+            <div className="pt-8 flex flex-col sm:flex-row items-center gap-4 border-t border-slate-200/60 justify-center lg:justify-start">
               <div className="flex -space-x-3">
                 {[1,2,3,4].map(i => (
-                  <img key={i} src={`https://i.pravatar.cc/100?img=${i+10}`} alt="Student" className="w-10 h-10 rounded-full border-2 border-white shadow-sm" />
+                  <motion.img 
+                    key={i} 
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.5 + (i * 0.1) }}
+                    src={`https://i.pravatar.cc/100?img=${i+10}`} 
+                    alt="Student" 
+                    className="w-10 h-10 rounded-full border-2 border-white shadow-sm" 
+                  />
                 ))}
               </div>
               <div className="text-sm font-medium text-slate-600">
-                Hơn <strong className="text-slate-900">500+</strong> sinh viên <br/> đang theo học
+                Hơn <motion.strong 
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  className="text-slate-900"
+                >
+                  500+
+                </motion.strong> sinh viên <br className="hidden sm:block"/> đang theo học
               </div>
             </div>
           </motion.div>
@@ -104,7 +120,7 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="relative h-[600px] hidden lg:block"
+            className="relative h-[400px] sm:h-[500px] lg:h-[600px] hidden sm:block mt-12 lg:mt-0"
           >
             {/* Main Image */}
             <motion.div 
@@ -124,23 +140,20 @@ export default function Home() {
 
             {/* Floating Card 1 - Analytics */}
             <motion.div 
-              drag
-              dragConstraints={{ left: -50, right: 50, top: -50, bottom: 50 }}
-              whileDrag={{ scale: 1.05, cursor: "grabbing" }}
               animate={{ y: [0, -15, 0] }}
               transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-              className="absolute -left-12 top-20 bg-white/90 backdrop-blur-xl p-6 rounded-2xl shadow-xl border border-white/50 w-64 z-20 cursor-grab"
+              className="absolute -left-4 sm:-left-12 top-10 sm:top-20 bg-white/90 backdrop-blur-xl p-4 sm:p-6 rounded-2xl shadow-xl border border-white/50 w-48 sm:w-64 z-20"
             >
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center">
-                  <BarChart3 className="w-5 h-5" />
+              <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center">
+                  <BarChart3 className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-slate-400 uppercase">Tăng trưởng</div>
-                  <div className="font-bold text-slate-900">+124%</div>
+                  <div className="text-[10px] sm:text-xs font-bold text-slate-400 uppercase">Tăng trưởng</div>
+                  <div className="font-bold text-slate-900 text-sm sm:text-base">+124%</div>
                 </div>
               </div>
-              <div className="h-10 flex items-end gap-1">
+              <div className="h-8 sm:h-10 flex items-end gap-1">
                 {[40, 70, 45, 90, 65, 100].map((h, i) => (
                   <div key={i} className="flex-1 bg-blue-500 rounded-sm" style={{ height: `${h}%` }} />
                 ))}
@@ -149,35 +162,18 @@ export default function Home() {
 
             {/* Floating Card 2 - Engagement */}
             <motion.div 
-              drag
-              dragConstraints={{ left: -50, right: 50, top: -50, bottom: 50 }}
-              whileDrag={{ scale: 1.05, cursor: "grabbing" }}
               animate={{ y: [0, 20, 0] }}
               transition={{ repeat: Infinity, duration: 8, ease: "easeInOut", delay: 1 }}
-              className="absolute -right-8 bottom-32 bg-white/80 backdrop-blur-xl p-6 rounded-2xl shadow-[0_20px_50px_rgba(0,_0,_0,_0.1)] border border-white w-56 z-20 cursor-grab"
+              className="absolute -right-4 sm:-right-8 bottom-20 sm:bottom-32 bg-white/80 backdrop-blur-xl p-4 sm:p-6 rounded-2xl shadow-[0_20px_50px_rgba(0,_0,_0,_0.1)] border border-white w-44 sm:w-56 z-20"
             >
-              <div className="flex items-center gap-3 mb-2">
-                <Users className="w-5 h-5 text-primary" />
-                <span className="font-bold text-slate-900">Tương tác</span>
+              <div className="flex items-center gap-2 sm:gap-3 mb-2">
+                <Users className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+                <span className="font-bold text-slate-900 text-sm sm:text-base">Tương tác</span>
               </div>
-              <div className="text-3xl font-display font-bold text-slate-900 mb-1">24.5K</div>
-              <div className="text-sm font-medium text-emerald-500 flex items-center gap-1">
-                <TrendingUp className="w-4 h-4" /> +15.3% tuần này
+              <div className="text-2xl sm:text-3xl font-display font-bold text-slate-900 mb-1">24.5K</div>
+              <div className="text-xs sm:text-sm font-medium text-emerald-500 flex items-center gap-1">
+                <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4" /> +15.3%
               </div>
-            </motion.div>
-
-            {/* Floating Element 3 - Review */}
-            <motion.div 
-              drag
-              dragConstraints={{ left: -20, right: 20, top: -20, bottom: 20 }}
-              animate={{ x: [0, 10, 0], rotate: [0, 5, 0] }}
-              transition={{ repeat: Infinity, duration: 7, ease: "easeInOut", delay: 2 }}
-              className="absolute left-10 -bottom-6 bg-white p-4 rounded-full shadow-[0_10px_30px_rgba(0,_0,_0,_0.08)] border border-slate-100 flex items-center gap-3 pr-6 z-20 cursor-grab"
-            >
-              <div className="bg-amber-100 p-2 rounded-full text-amber-500">
-                <Star className="w-4 h-4 fill-current" />
-              </div>
-              <span className="font-bold text-sm text-slate-700">Chất lượng đào tạo số 1</span>
             </motion.div>
 
           </motion.div>
@@ -188,22 +184,22 @@ export default function Home() {
       <Marquee />
 
       {/* Highlights Section */}
-      <section className="py-32 px-6 bg-white">
+      <section className="py-20 lg:py-32 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <FadeIn>
-            <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-16 gap-8 text-center md:text-left">
               <div>
-                <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-900 mb-4 tracking-tight">Vì sao chọn <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-rose-500">VKU?</span></h2>
-                <p className="text-slate-600 max-w-xl text-lg font-light">Môi trường định hướng thực hành toàn diện, đồng hành cùng mạng lưới doanh nghiệp sâu rộng.</p>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-slate-900 mb-4 tracking-tight">Vì sao chọn <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-rose-500">VKU?</span></h2>
+                <p className="text-slate-600 max-w-xl text-base sm:text-lg font-light mx-auto md:mx-0">Môi trường định hướng thực hành toàn diện, đồng hành cùng mạng lưới doanh nghiệp sâu rộng.</p>
               </div>
               <Link to="/chuong-trinh" className="flex items-center gap-2 font-bold text-primary hover:text-primary-dark transition-colors group">
-                Xem chi tiết chương trình
+                Xem chi tiết
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
           </FadeIn>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
             {[
               {
                 icon: <Zap className="w-8 h-8 text-amber-500" />,
@@ -228,16 +224,16 @@ export default function Home() {
                 <motion.div 
                   whileHover={{ y: -12, scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="bg-white rounded-[2rem] p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] border border-slate-100 relative overflow-hidden group h-full flex flex-col z-10"
+                  className="bg-white rounded-[2rem] p-8 lg:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] border border-slate-100 relative overflow-hidden group h-full flex flex-col z-10"
                 >
                   <div className={`absolute top-0 right-0 w-32 h-32 ${feature.bg} rounded-bl-[100px] -z-10 transition-transform duration-500 group-hover:scale-[2.5]`} />
                   
-                  <div className="bg-white w-16 h-16 rounded-2xl flex items-center justify-center shadow-sm mb-8 border border-slate-50 group-hover:shadow-md transition-all duration-300 group-hover:-translate-y-2">
+                  <div className="bg-white w-14 h-14 lg:w-16 lg:h-16 rounded-2xl flex items-center justify-center shadow-sm mb-6 lg:mb-8 border border-slate-50 group-hover:shadow-md transition-all duration-300 group-hover:-translate-y-2">
                     {feature.icon}
                   </div>
                   
-                  <h3 className="text-2xl font-display font-bold text-slate-900 mb-4">{feature.title}</h3>
-                  <p className="text-slate-600 leading-relaxed font-light flex-1">{feature.desc}</p>
+                  <h3 className="text-xl lg:text-2xl font-display font-bold text-slate-900 mb-4">{feature.title}</h3>
+                  <p className="text-slate-600 leading-relaxed font-light flex-1 text-sm lg:text-base">{feature.desc}</p>
                 </motion.div>
               </FadeIn>
             ))}
@@ -246,26 +242,26 @@ export default function Home() {
       </section>
 
       {/* Modern Brutalist Inspired CTA */}
-      <section className="px-6 pb-32 bg-white">
+      <section className="px-6 pb-20 lg:pb-32 bg-white">
         <FadeIn>
-          <div className="max-w-7xl mx-auto bg-slate-900 rounded-[3rem] p-12 lg:p-24 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-12">
+          <div className="max-w-7xl mx-auto bg-slate-900 rounded-[2.5rem] lg:rounded-[3rem] p-8 sm:p-12 lg:p-24 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left">
             {/* Deco background */}
             <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/40 via-transparent to-transparent opacity-50" />
             
             <div className="relative z-10 max-w-2xl">
-              <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-6 leading-[1.1] tracking-tight">
-                Sẵn sàng dẫn dắt <br/>
+              <h2 className="text-3xl sm:text-4xl md:text-6xl font-display font-bold text-white mb-6 leading-[1.1] tracking-tight">
+                Sẵn sàng dẫn dắt <br className="hidden sm:block" />
                 <span className="text-primary-200">thế hệ số tiếp theo?</span>
               </h2>
-              <p className="text-xl text-slate-400 font-light mb-8 max-w-lg">
+              <p className="text-lg sm:text-xl text-slate-400 font-light mb-8 max-w-lg mx-auto md:mx-0">
                 Chỉ còn vài bước để hoàn tất hồ sơ ứng tuyển vào chuyên ngành Digital Marketing tại VKU.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/tuyen-sinh" className="px-8 py-4 bg-primary text-white rounded-2xl font-bold text-lg hover:bg-primary-light transition-all text-center">
-                  Bắt đầu ứng tuyển ngay
+              <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                <Link to="/tuyen-sinh" className="w-full sm:w-auto px-8 py-4 bg-primary text-white rounded-2xl font-bold text-lg hover:bg-primary-light transition-all text-center">
+                  Ứng tuyển ngay
                 </Link>
-                <a href="#" className="px-8 py-4 bg-white/10 text-white backdrop-blur-md rounded-2xl font-bold text-lg hover:bg-white/20 transition-all text-center">
+                <a href="#" className="w-full sm:w-auto px-8 py-4 bg-white/10 text-white backdrop-blur-md rounded-2xl font-bold text-lg hover:bg-white/20 transition-all text-center">
                   Tải Brochure
                 </a>
               </div>
